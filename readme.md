@@ -1,12 +1,14 @@
+
 # Oracle DB
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-water.svg)](https://forthebadge.com)
+
+***
 Essa aplicação retorna dados de um banco Oracle.
 
-Formas de Uso da API: 
+Formas de Uso da API:
 
-
-# Retorna todos os usuários, com os dados completos:
-```http://192.168.2.214:8073/api/users/```
+## Retorna todos os usuários, com os dados completos:
+> http://192.168.2.214:8073/api/users/
 
 Saída: 
 ```
@@ -21,8 +23,8 @@ Saída:
 ]
 ```
 
-# Retorna Apenas o CPF de todos os usuários:
-```http://192.168.2.214:8073/api/users/CPF```
+## Retorna Apenas o CPF de todos os usuários:
+> http://192.168.2.214:8073/api/users/CPF
 
 Saída: 
 ```
@@ -30,9 +32,8 @@ Saída:
     "00000000000"
 ]
 ```
-
-# Retorna os dados de um CPF específico:
-```http://192.168.2.214:8073/api/users/CPF/12300012399```
+## Retorna os dados de um CPF específico:
+> http://192.168.2.214:8073/api/users/CPF/12300012399
 
 Saída: 
 ```
