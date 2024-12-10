@@ -17,7 +17,18 @@ const getAllUsersByParameter = async ( req, resp) => {
     resp.status(200).send(returnUsersDataCpfs)
 }
 
+// Return user data by cpf
+const getAllUsersByCpf = async ( req, resp) => {
+    returnUsersData = await serviceOracleGetUsers()
+    const userCPF = req.params.cpf
+    const returnUsersDataCpfs = returnUsersData
+    .filter( filtered => filtered.CPF === userCPF)
+    .map(user => user)
+    resp.status(200).send(returnUsersDataCpfs)
+}
+
 module.exports = {
     getAllUsers,
-    getAllUsersByParameter
+    getAllUsersByParameter,
+    getAllUsersByCpf
 }
