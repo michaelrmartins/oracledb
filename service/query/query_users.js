@@ -1,6 +1,5 @@
 // -- Retorna código do usuário, nome, CPF, se já fez o primeiro login, se está ativo ou não.
 
-
 const querySelectUsers = `
 SELECT cd_usuario, nm_usuario ,CPF, sn_senha_plogin, sn_ativo FROM DBASGU.USUARIOS
 WHERE SN_ATIVO = 'S'

@@ -8,6 +8,7 @@ const Dotenv = require('dotenv')
 Dotenv.config()
 
 const { querySelectUsers } = require('./query/query_users')
+const { querySelectPatientsInterned } = require('./query/query_patients')
 
 const oracleUser = process.env.ORACLE_USER
 const oraclePasswd = process.env.ORACLE_PASSWD
@@ -29,6 +30,23 @@ async function serviceOracleGetUsers() {
 
 }
 
+
+async function serviceOracleGetPatientsInterned() {
+    const connection = await oracledb.getConnection ({
+        user          : oracleUser,
+        password      : oraclePasswd,
+        connectString : oracleCstring
+    });
+
+    const result = await connection.execute(querySelectPatientsInterned);
+
+    console.log(result.rows);
+    await connection.close();
+    return result.rows
+
+};
+
 module.exports = {
-    serviceOracleGetUsers
+    serviceOracleGetUsers,
+    serviceOracleGetPatientsInterned
 }
