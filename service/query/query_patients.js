@@ -1,7 +1,7 @@
 // Query to select all interned patients
 
 const querySelectPatientsInterned = `
-SELECT paciente.nm_paciente,paciente.dt_nascimento, paciente.nr_cpf, atendime.dt_atendimento ,leito.ds_leito,leito.cd_leito 
+SELECT paciente.nm_paciente,paciente.dt_nascimento, paciente.nr_cpf,paciente.tp_sexo, atendime.dt_atendimento ,leito.ds_leito,leito.cd_leito 
 FROM atendime
 inner JOIN paciente ON paciente.cd_paciente = atendime.cd_paciente
 INNER JOIN leito ON leito.cd_leito = atendime.cd_leito
