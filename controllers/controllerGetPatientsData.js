@@ -3,11 +3,16 @@
 const { serviceOracleGetPatientsInterned, serviceOracleGetPatientsInternedByBed } = require('../service/app-oracleget')
 
 // Return data from all interned patients
-const getAllPatientsInterned = async ( req, res) => {
-    returnPatientsData = await serviceOracleGetPatientsInterned() 
-    const returnPatientsInternetData = returnPatientsData
-    res.status(200).send(returnPatientsInternetData)
-}
+const getAllPatientsInterned = async (req, res) => {
+    res.set({
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store'
+    });
+    const returnPatientsData = await serviceOracleGetPatientsInterned();
+    res.status(200).send(returnPatientsData);
+};
 
 // return data from interned patients by bed
 const getAllPatientsInternedByBed = async ( req, res) => {
@@ -19,6 +24,12 @@ const getAllPatientsInternedByBed = async ( req, res) => {
     console.log(`Bed parameter received: ${leito}`)
     returnPatientsData = await serviceOracleGetPatientsInternedByBed(leito) 
     const returnPatientsInternetData = returnPatientsData
+    res.set({
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store'
+    });
     res.status(200).send(returnPatientsInternetData)
 }
 
