@@ -1,6 +1,6 @@
 // Controller - Get Patients Data 
 
-const { serviceOracleGetPatientsInterned, serviceOracleGetPatientsInternedByBed } = require('../service/app-oracleget')
+const { serviceOracleGetPatientsInterned, serviceOracleGetPatientsInternedByBed } = require('../service/service-getPatientsData.js')
 
 // Return data from all interned patients
 const getAllPatientsInterned = async (req, res) => {

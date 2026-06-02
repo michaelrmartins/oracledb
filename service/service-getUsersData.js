@@ -7,55 +7,58 @@ oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 const Dotenv = require('dotenv')
 Dotenv.config()
 
-const { querySelectUsers } = require('./query/query_users')
-const { querySelectPatientsInterned, querySelectPatientsInternedByBed } = require('./query/query_patients')
+const { querySelectAllUsers, 
+        querySelectActiveUsers,
+        querySelectInactiveUsers  } = require('./query/query_users')
 
 const oracleUser = process.env.ORACLE_USER
 const oraclePasswd = process.env.ORACLE_PASSWD
 const oracleCstring = process.env.ORACLE_CSTRING
 
-async function serviceOracleGetUsers() {
+// Service - Get all users
+async function serviceOracleGetAllUsers() {
 
     const connection = await oracledb.getConnection ({
         user          : oracleUser,
         password      : oraclePasswd,
         connectString : oracleCstring
     });
-    const result = await connection.execute(querySelectUsers);
+    const result = await connection.execute(querySelectAllUsers);
     console.log(result.rows);
     await connection.close();
     return result.rows
 };
 
-async function serviceOracleGetPatientsInterned() {
+// Service - Get all users
+async function serviceOracleGetAllActiveUsers() {
+
     const connection = await oracledb.getConnection ({
         user          : oracleUser,
         password      : oraclePasswd,
         connectString : oracleCstring
     });
-    const result = await connection.execute(querySelectPatientsInterned);
+    const result = await connection.execute(querySelectActiveUsers);
     console.log(result.rows);
     await connection.close();
     return result.rows
 };
 
-async function serviceOracleGetPatientsInternedByBed(leito) {
-    leito_id = leito
-    console.log(`Bed ID in service: ${leito_id}`)
+// Service - Get all inactive users
+async function serviceOracleGetAllInactiveUsers() {
+
     const connection = await oracledb.getConnection ({
         user          : oracleUser,
         password      : oraclePasswd,
         connectString : oracleCstring
     });
-
-    const result = await connection.execute(querySelectPatientsInternedByBed, [leito_id]);
+    const result = await connection.execute(querySelectInactiveUsers);
     console.log(result.rows);
     await connection.close();
     return result.rows
-}
+};
 
  module.exports = {
-    serviceOracleGetUsers,
-    serviceOracleGetPatientsInterned,
-    serviceOracleGetPatientsInternedByBed
+    serviceOracleGetAllUsers,
+    serviceOracleGetAllActiveUsers,
+    serviceOracleGetAllInactiveUsers
 }
