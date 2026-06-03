@@ -10,4 +10,4 @@ server = require('./app')
 const server_address = process.env.SERVER_ADDRESS
 const server_port = process.env.SERVER_PORT
 
-server.listen(server_port, () => console.log(`Server running on: http://${server_address}:${server_port}`))
+server.listen(server_port, '127.0.0.1', () => console.log(`Server running on: http://${server_address}:${server_port}`))

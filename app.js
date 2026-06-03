@@ -9,12 +9,12 @@ const cors = require('cors')
 app.use(express.json())
 
 // // Enable access from any origin !!! DANGER - REMOVE IN PRODUCTION  
-app.use (cors(
+// app.use (cors(
 
-    {
-        origin: '*'
-    }
-));
+//     {
+//         origin: '*'
+//     }
+// ));
 
 // console.log(routes)
 
